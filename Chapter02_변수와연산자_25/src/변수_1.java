@@ -73,7 +73,7 @@
  *        int => 4byte (-21억4천 ~ 21억4천)
  *        long => 8byte => 64bit        
  */
-public class 변수_25페이지 {
+public class 변수_1 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -83,9 +83,73 @@ public class 변수_25페이지 {
 //	//	b1 = 100;
 //	    System.out.println(b1);
 //	    
-		long a = 21000000;
-		int b = 21000L;
+//		국어 영어 수학 점수를 총점 계산
+		int kor = 90;
+		// 4byte 메모리 공간을 만들어서 kor 이름으로 90을 저장한다
+		int eng = 80;
+		int math = 70;
+		// ------초기값
+		// 초기값을 부여하는 방법
 		
+//		  1. 명시적 초기화 : int a = 100 2. 난수발생 => 임의로 숫자를 추출 => 게임 3. 사용자로부터 값을 받아서 초기화 초기값
+//		  없이 사용하면 오류가 난다.
+	    int total = 0;
+	    System.out.println(total);
+	    System.out.println(kor + eng + math);
+	    /*
+	     * 변수
+	     * ---
+	     * 1. 지역변수 : 반드시 초기화를 해서 사용
+	     * ------------------------------ 
+	     * 초기화 방법(28page)
+	     *  1) 선언과 동시에 초기값 부여
+	     *  	int a = 10
+	     *  2) 선언을 먼저 , 나중에 값을 대입
+	     *  	int a;
+	     *  	a = 10;
+	     *  3) 여러개를 동시에 선언
+	     *  	int a = 10;
+	     *  	int b = 20;
+	     *  	int c = 30;
+	     *  	long d = 40;
+	     *  	int a,b,c, ;
+	     *  	----변수 동일
+	     *  	int a=10 , b=10 , c=10; 
+	     * 2. 멤버변수
+	     * 3. 공유변수
+	     * 4. 참조변수
+	     * 
+	     * 논리형 (30page)
+	     * 논리형 => boolean => 저장하는 값 => true/false
+	     * 1byte => true=1 , false=0
+	     * => 사용하는 위치는 조건을 사용할때
+	     * => 형식)
+	     * 	  boolean bCheack=false;
+	     */
+	    boolean bCheck = false;
+	    System.out.println(bCheck); //보통 아이디를 입력할때 많이 사용. 
+	    /*
+	     * 	문자형
+	     * =>char : 멀티바이트 => 2byte =>UniCode
+	     * 	-----
+	     * 	 | C언어 => 싱글바이트 => 1byte => ASC
+	     * 	 => 각 문자마다 번호를 부여 (ASC)
+	     * 	 => 0~65,535 
+	     * 	 => 0~255 
+	     * 	 => A  => 65
+	     * 	 => a  => 97
+	     *   =>'0' => 48
+	     *   => 표현방식 => 문자 1개만 => '' 사용해야함
+	     */
+	    char hakjum = 'B';
+	    System.out.println(hakjum);
+	    char fname = '홍';
+	    System.out.println(fname);
+	    char num = '0';
+	    System.out.println(num);
+	    
+	    
+	    
 	}
 
 }

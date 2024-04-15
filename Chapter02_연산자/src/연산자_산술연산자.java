@@ -22,6 +22,7 @@ public class 연산자_산술연산자 {
 		System.out.println("num1 = "+num1);
 		System.out.println("num2 = "+num2);
 		
+		
 		// + 
 		int plus=num1+num2;
 		System.out.println("plus = " +(num1+num2));

@@ -39,7 +39,7 @@ public class 연산자_논리연산자_1 {
 		int x=10;
 		int y=9;
 		
-		boolean bCheck= x==y && ++y==x;
+		boolean bCheck= x==y && ++y==x; 
 		System.out.println("bCheck= "+bCheck);
 		System.out.println("x= "+x);
 		System.out.println("y= "+y); // y가 9가 출력된것을 보았을때 false 기 때문에

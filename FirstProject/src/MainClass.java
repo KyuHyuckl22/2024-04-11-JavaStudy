@@ -38,6 +38,7 @@ public class MainClass {
 		}
 		fr.close();
 		System.out.println(data);
+		
 		}
 	}
 

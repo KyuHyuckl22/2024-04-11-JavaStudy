@@ -27,6 +27,8 @@
 public class 제어문_단일조건문_3 {
 	
 	public static void main(String[] args) {
+		
+		
 		int sum=0;
 		int num=(int)(Math.random()*100)+1; // 1~100=> 난수 임의 추출
 		System.out.println("1.num="+num);

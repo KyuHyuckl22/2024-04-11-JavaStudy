@@ -24,7 +24,7 @@ public class 자바제어문_반복문 {
 		
 		for( i=num1;i<=num2;i++)
 		{
-			gop*=i;
+			gop*=i; 
 		}
 			System.out.println(gop);
 			

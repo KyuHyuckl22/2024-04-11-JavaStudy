@@ -54,7 +54,9 @@ public class 문자열_1 {
  *           "showDt":"20240422",
  *           "thumbUrl":"/common/mast/movie/2024/02/thumb/thn_febb838d186b46878ca5467759930333.jpg",
  *           "movieNm":"파묘",
- *           "movieNmEn":"Exhuma","synop":"미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은\r\n기이한 병이 대물림되는 집안의 장손을 만난다.\r\n조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고,\r\n돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다.\r\n\r\n“전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지”\r\n\r\n절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘.\r\n‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만,\r\n‘화림’의 설득으로 결국 파묘가 시작되고…\r\n\r\n나와서는 안될 것이 나왔다.\r\n\r\n\r\n","prdtYear":"2024","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"133","showTs":"50","director":"장재현","prNm":"(주)쇼박스,(주)엠씨엠씨","dtNm":"(주)쇼박스","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"미스터리,공포(호러)","watchGradeNm":"15세이상관람가","openDt":"20240222","salesAmt":129113849,"audiCnt":13532,"totalSalesAmt":114043582262,"totalAudiCnt":11798651,"scrCnt":940,"showCnt":2558,"rank":1,"rankInten":1,"rankOldAndNew":"OLD","rownum":1}	 
+ *           "movieNmEn":"Exhuma",
+ *           "synop":"미국 LA, 거액의 의뢰를 받은 무당 ‘화림’(김고은)과 ‘봉길’(이도현)은\r\n기이한 병이 대물림되는 집안의 장손을 만난다.\r\n
+ *           	조상의 묫자리가 화근임을 알아챈 ‘화림’은 이장을 권하고,\r\n돈 냄새를 맡은 최고의 풍수사 ‘상덕’(최민식)과 장의사 ‘영근’(유해진)이 합류한다.\r\n\r\n“전부 잘 알 거야… 묘 하나 잘못 건들면 어떻게 되는지”\r\n\r\n절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘.\r\n‘상덕’은 불길한 기운을 느끼고 제안을 거절하지만,\r\n‘화림’의 설득으로 결국 파묘가 시작되고…\r\n\r\n나와서는 안될 것이 나왔다.\r\n\r\n\r\n","prdtYear":"2024","indieYn":null,"artmovieYn":null,"multmovieYn":null,"showTm":"133","showTs":"50","director":"장재현","prNm":"(주)쇼박스,(주)엠씨엠씨","dtNm":"(주)쇼박스","repNationCd":"한국","movieType":"장편","moviePrdtStat":"개봉","genre":"미스터리,공포(호러)","watchGradeNm":"15세이상관람가","openDt":"20240222","salesAmt":129113849,"audiCnt":13532,"totalSalesAmt":114043582262,"totalAudiCnt":11798651,"scrCnt":940,"showCnt":2558,"rank":1,"rankInten":1,"rankOldAndNew":"OLD","rownum":1}	 
  * 				
  */
 			}

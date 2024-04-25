@@ -1,6 +1,4 @@
-/*
- * 
- */
+
 import javax.swing.*;
 public class 문자열_4 extends JFrame{
 	JTextField tf=new JTextField();

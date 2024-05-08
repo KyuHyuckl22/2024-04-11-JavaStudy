@@ -55,7 +55,7 @@ public class 메소드정리_메소드화 {
 //		System.out.println(Arrays.toString(user));
 		while(true) {
 			inputData(user);
-			compare(com, user);
+			int s = compare(com, user);
 			if(isEnd(s)) {
 				System.out.print("Home Run");
 				break;

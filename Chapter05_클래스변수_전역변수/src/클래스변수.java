@@ -169,8 +169,8 @@
  *   
  */
 public class 클래스변수 {
-//	 이 부분은
-//   변수 선언 , 메소드 선언만 가능
+  //이 부분은
+  // 변수 선언 , 메소드 선언만 가능
 	public static void main(String[] args) {
 
 	}

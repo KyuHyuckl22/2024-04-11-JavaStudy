@@ -1,4 +1,5 @@
 package com.sist.main;
+
 //  Movie 를 불러온다
 import com.sist.vo.Movie;
 //     클래스가 다른 폴더에 저장된 경우는 반드시 import를 이용해서 불러온다

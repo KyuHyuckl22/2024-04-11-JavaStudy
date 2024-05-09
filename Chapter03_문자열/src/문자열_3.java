@@ -1,6 +1,4 @@
-/*
- * 
- */
+
 public class 문자열_3 {
  
 	public static void main(String[] args) {

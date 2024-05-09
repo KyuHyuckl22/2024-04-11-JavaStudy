@@ -5,7 +5,7 @@ package com.sist.main;
  *   1. 변수            1. 연산자             1. 명령 프롬프트 => System.out.println();
  *   2. 배열            2. 제어문             2. 윈도우 => JFrame
  *   3. 클래스           3. 메소드            3. 브라우저 => HTML
- *   -------           -----------       -----------
+ *   -------           -----------        ---------
  *   파일 / 오라클          클래스    
  *   
  *   1. 묶는 방법
@@ -37,8 +37,8 @@ package com.sist.main;
  *           private String id;  //비공개 
  *           private String Pwd;
  *        }
- *      ** 윈도우 관련 => Button/TextField  => 공개
- *      ** 개인정보 / 영화정보 ... => 비공개 
+ *      ** 윈도우 관련 --> Button/TextField  => 공개
+ *      ** 개인정보 / 영화정보 ... --> 비공개 
  *      ** 실제가 아니라 가상 => 키워드
  *         int : 4byte, double : 8byte
  *         ------------------------------------------

@@ -41,10 +41,7 @@ package com.sist.controller;
  *          ------------------- 다른 클래스에서 사용이 불가능 => 기능을 설정 (메소드)
  *                              읽기 / 저장 --> set변수명()
  *                               |
- *                              get변수명()
- *                              
- *                              
- *              
+ *                              get변수명()         
  */
 public class MainClass {
 

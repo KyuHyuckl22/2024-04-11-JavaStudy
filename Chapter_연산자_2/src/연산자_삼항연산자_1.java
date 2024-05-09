@@ -1,6 +1,4 @@
-/*
- * 
- */
+
 import java.util.Scanner; //자바에서 지원하는 클래스를 읽어올때 
 public class 연산자_삼항연산자_1 {
 	

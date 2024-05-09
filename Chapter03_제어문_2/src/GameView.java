@@ -1,21 +1,3 @@
-//import java.awt.*;
-//import javax.swing.*;
-//public class Gameview extends JPanel {
-//	Image back,horse;
-//	int x=750;
-//	int y=500;
-//	public Gameview()
-//	{
-//		back=Toolkit.getDefaultToolkit().getImage("c:\\javaDev\\back.jpg");
-//		horse=Toolkit.getDefaultToolkit().getImage("c:\\javaDev\\akf.jpg");
-//	}
-//	@Override
-//	public void paint(Graphics g) {
-//		super.paint(g);
-//		g.drawImage(back,0,0,getWidth(),getHeight(),this);
-//		g.drawImage(horse,x,y,120,80,this);
-//	}
-//}
 import java.awt.*;
 import javax.swing.*;
 public class GameView extends JPanel {
@@ -33,5 +15,6 @@ public class GameView extends JPanel {
 		g.drawImage(back,0,0,getWidth(),getHeight(),this);
 		g.drawImage(horse,x,y,120,80,this);
 	}
+    
     
 }

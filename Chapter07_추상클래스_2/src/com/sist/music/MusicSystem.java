@@ -33,14 +33,17 @@ public abstract class MusicSystem {
         System.out.println("가수명:"+m.getSinger());
         System.out.println("노래명:"+m.getAlbum());
 	}
-//	검색
-	public void find(String title) {
-		System.out.println();
-		for(Music m:musics) {
-			if( ) {
-			System.out.println(i+"."+m.getTitle());
-			i++;
-			}
-		}
+	   // 검색
+	   public void find(String title)
+	   {
+		   System.out.println("=========== 검색 ============");
+		   for(Music m:musics)
+		   {
+			   if(m.getTitle().contains(title))
+			   {
+			     System.out.println(m.getTitle());
+			   }
+		   }
+	   }
+	   //////////////////////////// 구현 
 	}
-}

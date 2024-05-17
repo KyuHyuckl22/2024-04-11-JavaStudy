@@ -8,13 +8,19 @@ public class ControllerPanel extends JPanel{
     // 요청이 들어왔을때 그거에 맞는 패널들을 보여주는것
 	public HomePanel hp=new HomePanel();
 	public FindPanel fp=new FindPanel();
+	public BoardListPanel bp=new BoardListPanel();
+	public NewPost np = new NewPost();
 	public ControllerPanel() {
 		setLayout(card);
 		add("FIND",fp);
 		add("HOME",hp);
+		add("BORD",bp);
+		add("NEW",np);
+
 	}
 
 	public static void main(String[] args) {
 		
 	}
+	
 }

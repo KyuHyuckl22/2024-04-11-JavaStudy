@@ -46,6 +46,7 @@ package com.sist.client;
  *           => Jbutton 2
  */
 import javax.swing.*; //javafx
+
 public class Login extends JFrame {
 //  포함클래스
 /*  모든 멤버변수는 private 이 아니다 => 라이브러리는 public으로 설정하는게 편함

@@ -7,9 +7,7 @@ import java.awt.event.*;
 
 public class ClientMain extends JFrame implements ActionListener {
 	
-   public void Login() {
-	   Login log=new Login();
-   }
+
    public MenuPanel mp = new MenuPanel();   // 메뉴 패널의 객체를 생성합니다.      ----------------------------|
    public ControllerPanel cp = new ControllerPanel();   // 컨트롤러 패널의 객체를 생성합니다.   ----------------| 포함 클래스.
    public BoardListPanel bp = new BoardListPanel();
@@ -61,7 +59,7 @@ public class ClientMain extends JFrame implements ActionListener {
    public void actionPerformed(ActionEvent e) {
       // 클릭된 버튼에 따라 다른 동작을 수행합니다.
 	   if(mp.b1 == e.getSource()) {
-		  Login();
+		  
 	   }
         else if (mp.b2 == e.getSource()) {         // 메뉴 2번 버튼을 클릭한 경우
          cp.card.show(cp, "HOME");         // 홈 화면을 보여줍니다.

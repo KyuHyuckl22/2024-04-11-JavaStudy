@@ -19,7 +19,7 @@ public class 메소드정리_메소드화 {
 	static void inputData(int[] user) {
 		user= new int[3];
 		Scanner scan=new Scanner(System.in);
-		while(true) {
+		while(true) { 
 			System.out.print(" 세자리 정수 입력 :");
 			int input = scan.nextInt();
 			//오류처리하기

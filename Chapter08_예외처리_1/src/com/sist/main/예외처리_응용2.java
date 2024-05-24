@@ -25,6 +25,7 @@ public class 예외처리_응용2 extends JFrame implements ActionListener{
     	tf.setEnabled(false);// 비활성화 
     	// 윈도우 추가 
     	add(tf);
+    	
     	b1.setBounds(165, 15, 100, 30);
     	add(b1);
     	b2.setBounds(270, 15, 100, 30);

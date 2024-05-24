@@ -28,6 +28,7 @@ public class 예외처리_응용 extends JFrame implements ActionListener{
 		setLayout(null);
 		tf.setBounds(10,15,150,30);
 		tf.setEnabled(false);  // 비활성화 시켜놓기  시작버튼을 눌러야 활성화 되게끔
+		
 //		윈도우에 추가
 		add(tf);
 		b1.setBounds(165, 15, 100, 30);

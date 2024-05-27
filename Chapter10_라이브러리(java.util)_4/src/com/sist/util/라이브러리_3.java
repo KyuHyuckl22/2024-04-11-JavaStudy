@@ -6,8 +6,7 @@ package com.sist.util;
  *        = next()
  *        = remove()
  *        = hasProvious()  => 아래 -> 위
- *        
- *        
+ *               
  *     Set / Map => 크롤링 시에 사용
  */
 import java.util.*;

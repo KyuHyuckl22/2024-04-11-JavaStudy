@@ -1,8 +1,6 @@
 package com.sist.util;
-
 import java.util.*;
 import java.io.*;
-
 public class 라이브러리_2 {
 
 	public static void main(String[] args) {

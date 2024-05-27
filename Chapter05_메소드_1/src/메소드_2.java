@@ -39,7 +39,7 @@ public class 메소드_2 {
 		System.out.println(" PW : ");
 		String pw = scan.next();
 //		기능요청
-//		메소드에서 넘겨주는 결과값을 받는ㄷ
+//		메소드에서 넘겨주는 결과값을 받는다
 		boolean bCheck=isLogin(id,pw);
 		
 		if(bCheck) {

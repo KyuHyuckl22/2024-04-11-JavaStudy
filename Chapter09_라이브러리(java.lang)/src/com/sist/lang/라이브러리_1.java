@@ -1,4 +1,5 @@
 package com.sist.lang;
+
 /*
  *    라이브러리 => 자바에서 지원하는 클래스 
  *              => J2SE / J2EE 
@@ -35,9 +36,9 @@ package com.sist.lang;
  *                     Socket  / ServerSocket 
  *                     URL 
  *     => java.sql => 오라클
- *           = ****************************************************Connection 
- *           = ****************************************************Statement 
- *           = ****************************************************ResultSet 
+ *           = *************Connection 
+ *           = *************Statement 
+ *           = *************ResultSet 
  *     ----------------------------------------------------------
  *     => 2차 자바 (웹) => HttpServletRequest / HttpServletResponse / HttpSession / Cookie 
  *                      -------------------- --------------------  -----------   -------
@@ -89,46 +90,41 @@ package com.sist.lang;
  *         A bb=aa.clone();  => bb.a=100 , bb.b=200 CV
  */
 import java.util.*;
+
 public class 라이브러리_1 {
-   
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-        int[] arr={10,20,30};
-        int[] temp=arr; // 참조 => 같은 주소를 제어하면 => 동시에 변경 => 별칭 
-        System.out.println("===== arr =====");
-        System.out.println(Arrays.toString(arr));
-        System.out.println(arr);
-        System.out.println("===== temp =====");
-        System.out.println(Arrays.toString(temp));
-        System.out.println(temp);
-        System.out.println("===== temp변경====");
-        temp[0]=100;
-        temp[1]=200;
-        temp[2]=300;
-        System.out.println("===== temp =====");
-        System.out.println(Arrays.toString(temp));
-        System.out.println("===== arr =====");
-        System.out.println(Arrays.toString(arr));
-        // 같은 메모리 공간을 제어 => 참조 
-        // 메소드를 통해서 데이터를 변경할 때 ==> Call By Reference (메모리주소에 의한 참조)*/
-		/*int[] arr={10,20,30};
-		int[] temp=arr.clone();// 새로운 메모리 생성 
+		int[] arr = { 10, 20, 30 };
+		int[] temp = arr; // 참조 => 같은 주소를 제어하면 => 동시에 변경 => 별칭
 		System.out.println("===== arr =====");
-        System.out.println(Arrays.toString(arr));
-        System.out.println(arr);
-        System.out.println("===== temp =====");
-        System.out.println(Arrays.toString(temp));
-        System.out.println(temp);
-        System.out.println("==== 변경 ====");
-        temp[0]=100;
-        temp[1]=200;
-        temp[2]=300;
-        System.out.println("===== arr =====");
-        System.out.println(Arrays.toString(arr));
-        System.out.println(arr);
-        System.out.println("===== temp =====");
-        System.out.println(Arrays.toString(temp));
-        System.out.println(temp);*/
+		System.out.println(Arrays.toString(arr));
+		System.out.println(arr);
+		System.out.println("===== temp =====");
+		System.out.println(Arrays.toString(temp));
+		System.out.println(temp);
+		System.out.println("===== temp변경====");
+		temp[0] = 100;
+		temp[1] = 200;
+		temp[2] = 300;
+		System.out.println("===== temp =====");
+		System.out.println(Arrays.toString(temp));
+		System.out.println("===== arr =====");
+		System.out.println(Arrays.toString(arr));
+		// 같은 메모리 공간을 제어 => 참조
+		// 메소드를 통해서 데이터를 변경할 때 ==> Call By Reference (메모리주소에 의한 참조)*/
+		/*
+		 * int[] arr={10,20,30}; int[] temp=arr.clone();// 새로운 메모리 생성
+		 * System.out.println("===== arr =====");
+		 * System.out.println(Arrays.toString(arr)); System.out.println(arr);
+		 * System.out.println("===== temp =====");
+		 * System.out.println(Arrays.toString(temp)); System.out.println(temp);
+		 * System.out.println("==== 변경 ===="); temp[0]=100; temp[1]=200; temp[2]=300;
+		 * System.out.println("===== arr =====");
+		 * System.out.println(Arrays.toString(arr)); System.out.println(arr);
+		 * System.out.println("===== temp =====");
+		 * System.out.println(Arrays.toString(temp)); System.out.println(temp);
+		 */
 	}
 
 }

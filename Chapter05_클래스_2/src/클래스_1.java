@@ -47,6 +47,7 @@
  *         1. 명시적인 초기화
  *            int a=10;  => 특별한 경우가 아니면 사용 빈도가 낮다
  *         2. 초기화 블록
+ *         
  *            = 인스턴스 블록
  *              class ClassName
  *              {
@@ -66,6 +67,7 @@
  *                  ----- 연산자 / 라이브러리 메소드 호출, 파일 읽기, 데이터베이스 연동, 제어문사용 ...
  *                        {} 안에서 사용
  *              }
+ *              
  *            = 정적 블록
  *            class ClassName
  *            {
@@ -183,146 +185,110 @@
  *  => number / type => 따로 가지고 있음
  *  => width / height => 모든 카드가 동일 => static
  */
-class Card
-{
+class Card {
 //	각자 사용되는 변수    => 인스턴스 
 	int number; // 0
 	String type; // null
 //	==> 아직 저장이 안됨 ==> new를 이용해야 저장
 //	공통으로 사용되는 변수 => 정적 변수 => static
-	static int width=200, height=300; // 명시적인 초기화 ==> 저장 => static은 컴파일시에 저장
+	static int width = 200, height = 300; // 명시적인 초기화 ==> 저장 => static은 컴파일시에 저장
 //	프로그램 종료시 까지 메모리가 유지됨  => Heap (프로그래머가 담당하는 메모리 영역)
 //	 지역변수, 매개변수는 밤색
-/*
- *   --------------------------------------------------------------------
- *     종류        메모리 저장 시점        메모리 헤제         저장위치 	   사용 범위
- *   --------------------------------------------------------------------
- *   지역변수	      메소드 호출           메소드 종료시        Stak        메소드 안 에서만
- *               =>메모리에 저장      => return에 해제                   사용이 가능
- *   --------------------------------------------------------------------
- *   인스턴스변수       new 사용시         프로그램 종료시       Heap        클래스 전체에서 사용이 가능
- *                                                                => 다른 클래스에서도 사용가능
- *    class A
- *    {
- *       int aa;
- *    }         
- *    => A a=new A(); ==>
- *        a는 변수/메소드를 관리하는 공간 => 객체
- *        a라는 공간 안에 aa 가 들어가 있다
- *        ---- a ----
- *         ---aa---
- *         
- *         --------
- *       ------------- => a.aa ( .은 메모리 주소 접근 연산자) => a주소안에 저장되어 있는 aa라는 변수에 접근                                                         
- *   --------------------------------------------------------------------
- *   정적변수       컴파일시에 저장         프로그램 종료시    Method Area     클래스전체에서 사용이 가능
- *   static	                                                      => 다른 클래스에서도 사용가능
- *   
- *   class A 
- *   {
- *     static int a; => new 없이 저장이 가능 => 모든 클래스에서 공통으로 사용되는 변수
- *   }
- *   
- *   A aa=new A();
- *   aa.a => 객체를 통해서 접근이 가능
- *   A.a => 클래스명으로 접근이 가능
- *   --------------------------------------------------------------------
- *   	
- */
+	/*
+	 * -------------------------------------------------------------------- 종류 메모리
+	 * 저장 시점 메모리 헤제 저장위치 사용 범위
+	 * -------------------------------------------------------------------- 지역변수 메소드
+	 * 호출 메소드 종료시 Stak 메소드 안 에서만 =>메모리에 저장 => return에 해제 사용이 가능
+	 * -------------------------------------------------------------------- 인스턴스변수
+	 * new 사용시 프로그램 종료시 Heap 클래스 전체에서 사용이 가능 => 다른 클래스에서도 사용가능 class A { int aa; }
+	 * => A a=new A(); ==> a는 변수/메소드를 관리하는 공간 => 객체 a라는 공간 안에 aa 가 들어가 있다 ---- a
+	 * ---- ---aa---
+	 * 
+	 * -------- ------------- => a.aa ( .은 메모리 주소 접근 연산자) => a주소안에 저장되어 있는 aa라는 변수에
+	 * 접근 -------------------------------------------------------------------- 정적변수
+	 * 컴파일시에 저장 프로그램 종료시 Method Area 클래스전체에서 사용이 가능 static => 다른 클래스에서도 사용가능
+	 * 
+	 * class A { static int a; => new 없이 저장이 가능 => 모든 클래스에서 공통으로 사용되는 변수 }
+	 * 
+	 * A aa=new A(); aa.a => 객체를 통해서 접근이 가능 A.a => 클래스명으로 접근이 가능
+	 * --------------------------------------------------------------------
+	 * 
+	 */
 }
+
 public class 클래스_1 {
-	
+
 	public static void main(String[] args) {
 //		카드 1장저장
-		Card card1=new Card();
-		System.out.println("card1="+card1);
+		Card card1 = new Card();
+		System.out.println("card1=" + card1);
 //		변수의 초기화
-		card1.number=3;
-		card1.type="♠";
-		System.out.println("number="+card1.number);
-		System.out.println("type="+card1.type);
-		System.out.println("width="+card1.width);
-		System.out.println("width="+card1.height);
-		System.out.println("===================");
-/*
- *     static => 별도의 영역에 따로 1개만 저장이 된다 => card1, card2 모두 접근이 가능하다
- *      ------card1-------
- *         저장된 메모리 주소
- *         Card@1eb44e46  
- *      ------------------		Card@1eb44e46 --------------
- *                                               -------
- *                                                  3  => number  => card1.number
- *                                               -------
- *                                               
- *                                               -------
- *                                                  ♠  => type   => card1.type
- *                                               -------
- *                                               
- *                                            --------------                                             
- */
-		Card card2=new Card();
-		card2.number=5;
-		card2.type="♣";
-		System.out.println("card2="+card2);
-		System.out.println("number="+card2.number);
-		System.out.println("type="+card2.type);
-		System.out.println("width="+card2.width);
-		System.out.println("width="+card2.height);
+		card1.number = 3;
+		card1.type = "♠";
+		System.out.println("number=" + card1.number);
+		System.out.println("type=" + card1.type);
+		System.out.println("width=" + card1.width);
+		System.out.println("width=" + card1.height);
 		System.out.println("===================");
 		/*
-		 *      ------card2-------
-		 *         저장된 메모리 주소
-		 *         Card@e73f9ac
-		 *      ------------------		Card@e73f9ac --------------
-		 *                                               -------
-		 *                                                  3  => number  => card1.number
-		 *                                               -------
-		 *                                               
-		 *                                               -------
-		 *                                                  ♠  => type   => card1.type
-		 *                                               -------
-		 *                                               
-		 *                                            --------------                                             
+		 * static => 별도의 영역에 따로 1개만 저장이 된다 => card1, card2 모두 접근이 가능하다
+		 * ------card1------- 저장된 메모리 주소 Card@1eb44e46 ------------------ Card@1eb44e46
+		 * -------------- ------- 3 => number => card1.number -------
+		 * 
+		 * ------- ♠ => type => card1.type -------
+		 * 
+		 * --------------
+		 */
+		Card card2 = new Card();
+		card2.number = 5;
+		card2.type = "♣";
+		System.out.println("card2=" + card2);
+		System.out.println("number=" + card2.number);
+		System.out.println("type=" + card2.type);
+		System.out.println("width=" + card2.width);
+		System.out.println("width=" + card2.height);
+		System.out.println("===================");
+		/*
+		 * ------card2------- 저장된 메모리 주소 Card@e73f9ac ------------------ Card@e73f9ac
+		 * -------------- ------- 3 => number => card1.number -------
+		 * 
+		 * ------- ♠ => type => card1.type -------
+		 * 
+		 * --------------
 		 */
 //		static 변수 변경
-		card1.width=300;
-		card1.height=500;
-		
-		card2.width=500;
-		card2.height=1000;
-		
-		Card.width= 1200;
-		Card.height= 1500;  // static 변수 width, height 같은 메모리 공간을 제어하기 때문에 모두 변경이 된다
-		
-		
-		System.out.println("card1.width="+card1.width);     //500
-		System.out.println("card1.height="+card1.height);   //1000
-		
+		card1.width = 300;
+		card1.height = 500;
+
+		card2.width = 500;
+		card2.height = 1000;
+
+		Card.width = 1200;
+		Card.height = 1500; // static 변수 width, height 같은 메모리 공간을 제어하기 때문에 모두 변경이 된다
+
+		System.out.println("card1.width=" + card1.width); // 500
+		System.out.println("card1.height=" + card1.height); // 1000
+
 //		인스턴스 변수 => 메모리가 따로 생성 => 각각 영역만 제어가 가능
-		card1.number=7;
-		card1.type="♥";   // care1.number 를 아무리 바꿔도 card2.number 에는 영향을 줄 수 없다
-		
-		card2.number=8;
-		card2.type="◆";
-		
-		System.out.println("card1.number="+card1.number);
-		System.out.println("card1.type="+card1.type);
-	
-		System.out.println("card2.number="+card2.number);
-		System.out.println("card2.type="+card2.type);
-/*
- *      프로그램에서 데이터관리 => React / Vue => 데이터 관리
- *      -----------------
- * 		변수 => 배열 => 클래스       연산자/제어문 => 변경사항x  "핵심은 데이터를 어떤걸 가져다가 어떻게 제어할 것이냐"
- *    	=> 파일 => 오라클
- *    
- *      공통저장   /   따로 저장
- *      | static /  변수 선언
- *        정적 변수    인스턴스 변수 => 메모리가 별도로 생성 (new)
- *         | 컴파일시에 생성
- *         
- *         
- *         
- */
+		card1.number = 7;
+		card1.type = "♥"; // care1.number 를 아무리 바꿔도 card2.number 에는 영향을 줄 수 없다
+
+		card2.number = 8;
+		card2.type = "◆";
+
+		System.out.println("card1.number=" + card1.number);
+		System.out.println("card1.type=" + card1.type);
+
+		System.out.println("card2.number=" + card2.number);
+		System.out.println("card2.type=" + card2.type);
+		/*
+		 * 프로그램에서 데이터관리 => React / Vue => 데이터 관리 ----------------- 변수 => 배열 => 클래스
+		 * 연산자/제어문 => 변경사항x "핵심은 데이터를 어떤걸 가져다가 어떻게 제어할 것이냐" => 파일 => 오라클
+		 * 
+		 * 공통저장 / 따로 저장 | static / 변수 선언 정적 변수 인스턴스 변수 => 메모리가 별도로 생성 (new) | 컴파일시에 생성
+		 * 
+		 * 
+		 * 
+		 */
 	}
 }

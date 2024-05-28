@@ -27,27 +27,26 @@
  */
 //    데이터형=> 형변환
 //     프로그램에 맞게
-class Student
-{
+class Student {
 	String name;
 	int age;
-	// 인스턴스 변수 : 메모리 공가능ㄹ 따로 생성
+	// 인스턴스 변수 : 메모리 공간을 따로 생성
 	String school_name;
 }
+
 public class 클래스_01 {
 	public static void main(String[] args) {
-		Student hong=new Student();
+		Student hong = new Student();
 
-		Student Sim=new Student();
-		
-		Student park=new Student();
-	
-		
+		Student Sim = new Student();
+
+		Student park = new Student();
+
 		System.out.println("==== hong 영역 ====");
-		System.out.println("이름 : "+ hong.name);
-		System.out.println("나이 : "+ hong.name);
+		System.out.println("이름 : " + hong.name);
+		System.out.println("나이 : " + hong.name);
 		System.out.println("==== shim 영역 ====");
 		System.out.println("==== park 영역 ====");
-		
+
 	}
 }

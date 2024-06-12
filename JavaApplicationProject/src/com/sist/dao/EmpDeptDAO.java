@@ -12,7 +12,7 @@ public class EmpDeptDAO {
 	// 1. 드라이버 등록
 	public EmpDeptDAO() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDraiver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (Exception ex) {
 		}
 	}

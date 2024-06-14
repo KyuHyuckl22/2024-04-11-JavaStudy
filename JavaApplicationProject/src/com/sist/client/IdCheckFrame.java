@@ -38,10 +38,7 @@ public class IdCheckFrame extends JFrame{
 		add(p);
 		
 		setSize(300, 200);
-//		setVisible(true);
-//		EXIT_ON_CLOSE
+
 	}
-//	public static void main(String[] args) {
-//		new IdCheckFrame();
-//	}
+
 }

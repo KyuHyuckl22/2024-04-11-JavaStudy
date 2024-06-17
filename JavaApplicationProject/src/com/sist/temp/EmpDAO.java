@@ -14,7 +14,7 @@ public class EmpDAO {
 	 * -------------- VO, DAO 변경이 없다
 	 * 
 	 */
-	private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL = "jdbc:oracle:thin:@192.168.10.124:1521:XE";
 	// 싱글턴 => 한 개의 객체만 사용이 가능
 	private static EmpDAO dao;
 
@@ -39,7 +39,7 @@ public class EmpDAO {
 	// 3. 오라클 연결
 	public void getConnection() {
 		try {
-			conn = DriverManager.getConnection(URL, "hr", "happy");
+			conn = DriverManager.getConnection(URL, "hr1", "happy");
 			// conn hr/happy => 오라클 명령
 		} catch (Exception ex) {
 		}

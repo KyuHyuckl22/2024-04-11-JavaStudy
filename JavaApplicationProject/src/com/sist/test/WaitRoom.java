@@ -12,6 +12,7 @@ public class WaitRoom extends JPanel{
 	JTextField tf;
 	JTable table1, table2;
 	DefaultTableModel model1, model2;
+	JScrollBar bar;
 	
 	public WaitRoom() {
 		String[] col1 = {"방이름","상담사","상태","인원"};//방 정보
@@ -46,6 +47,7 @@ public class WaitRoom extends JPanel{
 		JScrollPane js3 = new JScrollPane(ta);
 		ta.setEditable(false); // 서버에서 보낸 값만 출력하는거
 		
+		bar = js3.getVerticalScrollBar();
 		tf = new JTextField(); //채팅 보내기
 		
 		b1 = new JButton("방 만들기");

@@ -8,7 +8,7 @@ import com.sist.commons.*;
 
 import java.awt.*;
 import java.awt.event.*;
-public class ClientMain extends JFrame implements ActionListener,Runnable{
+public class ClientMain extends JFrame implements ActionListener,Runnable,MouseListener{
 	CardLayout card = new CardLayout();
 	Login login = new Login();
 	WaitRoom wr = new WaitRoom();
@@ -20,6 +20,9 @@ public class ClientMain extends JFrame implements ActionListener,Runnable{
 	OutputStream out; // 이벤트 발생시 => 버튼 , 마우스클릭 ... 등
 //	서버에서 값을 읽어오는 클래스
 	BufferedReader in; //자동화 처리 => Thread 
+	
+	String myId;
+	int selRow = -1;
 	public ClientMain() {
 //		여기있는 순서대로 뜨는거임
 		dao = MemberDAO.newInstance();
@@ -31,6 +34,12 @@ public class ClientMain extends JFrame implements ActionListener,Runnable{
 		
 		login.b1.addActionListener(this);
 		login.b2.addActionListener(this);
+		
+		wr.tf.addActionListener(this); //enter키 처리
+		wr.b6.addActionListener(this); // 나가기
+		
+		wr.table2.addMouseListener(this);
+		wr.b4.addActionListener(this);// 정보 보기 버튼
 	}
 	public static void main(String[] args) {
 		new ClientMain();
@@ -45,12 +54,14 @@ public class ClientMain extends JFrame implements ActionListener,Runnable{
 		}
 		else if (e.getSource() == login.b1) {
 			
-/*			String id = login.tf.getText(); // 적은거 읽어오기
+			String id = login.tf.getText(); // 적은거 읽어오기
 			if(id.length()<1) {
 				login.tf.requestFocus();
 				return;
 			}
-			String pwd = String.valueOf(login.pf.getPassword());
+			String pwd
+			
+			= String.valueOf(login.pf.getPassword());
 			
 			if(pwd.length() <1) {
 				login.tf.requestFocus();
@@ -70,25 +81,57 @@ public class ClientMain extends JFrame implements ActionListener,Runnable{
 				login.pf.requestFocus();
 				
 			}
-		else {*/	
+		else {	
 				// 서버와 연결
 				try {
-					s = new Socket("192.168.0.125",11010);
+					s = new Socket("192.168.0.102",11010);
 					in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 					out = s.getOutputStream();
 //					서버와 연결 완료
 //					서버로 로그인 요청
-					out.write((Function.LOGIN+"|도우너\n").getBytes());
+					out.write((Function.LOGIN+"|"+id+"\n").getBytes());
 				} catch(Exception ex) {}
 				
 				new Thread(this).start();
-//			}
+			}
 			
 					
 		}
-		
+		else if(e.getSource() == wr.tf) { // 대기실 채팅
+			//1. 입력값 가지고 오기
+			String msg=wr.tf.getText();
+			if(msg.length()<1)
+				return;
+			
+			//2. 서버로 입력값 전송하기
+			try {
+				out.write((Function.CHAT + "|" + msg + "\n").getBytes()); // out 서버와 연결된 상태
+			}catch(Exception ex) {}
+			wr.tf.setText(""); //채팅창을 비워주는 상태
+			wr.tf.requestFocus();
+		}
+		else if (e.getSource() == wr.b6) {
+			try {
+				out.write((Function.EXIT+"|\n").getBytes());
+			}catch(Exception ex) {}
+		}
+		else if (e.getSource() == wr.b4) {
+			if(selRow == -1) {
+				JOptionPane.showMessageDialog(this, "정보를 볼 대상을 선택하세요");
+				return;
+			}
+			String yid = wr.model2.getValueAt(selRow, 0).toString();
+			try {
+				out.write((Function.INFO+"|"+yid+"\n").getBytes());
+			}catch(Exception ex ) {}
+			selRow = -1;
+		}
 			
 	}
+	// client(요청) => server(응답) => client(응답 출력)
+	// 요청시 이벤트 발생  
+	// 클릭, 엔터 . . . 
+	// 서버의 응답값을 처리
 	@Override
 	public void run() {
 		while(true) {
@@ -107,17 +150,79 @@ public class ClientMain extends JFrame implements ActionListener,Runnable{
 					};
 					wr.model2.addRow(data);
 				}break;
-				case Function.MYLOGIN:{
-					String id = st.nextToken();
+				case Function.MYLOG:{
+					myId = st.nextToken();
 					String name = st.nextToken();
 					setTitle(name+"님의 채팅창");
 					card.show(getContentPane(), "WR"); //대기실 창 이동
 				}break;
 				case Function.CHAT:{
 					wr.ta.append(st.nextToken()+"\n");
+					wr.bar.setValue(wr.bar.getMaximum());
+				}
+				case Function.EXIT : {
+		               String mid = st.nextToken();
+		               for (int i = 0; i < wr.model2.getRowCount(); i++) {
+		                  String ids = wr.model2.getValueAt(i, 0).toString();
+		                  if (mid.equals(ids)) {
+		                     wr.model2.removeRow(i);
+		                     
+		                  }
+		                  
+		               }
+		            
+				}break;
+				case Function.MYEXIT : {
+					dispose();
+					System.exit(0);
+				} break;
+				case Function.INFO: {
+					String info = "이름 :"+st.nextToken()+"\n"
+								+"성별 : "+st.nextToken()+"\n"
+								+"주소 : "+st.nextToken()+"\n"
+								+"이메일 : "+st.nextToken()+"\n"
+								+"전화 : "+st.nextToken()+"\n"
+								+"소개 : "+st.nextToken();
+					JOptionPane.showMessageDialog(this, info);
+								
 				}
 				}
 			}catch(Exception ex) {}
 		}
+	}
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getSource() == wr.table2) {
+			if(e.getClickCount() == 2) {
+				int row = wr.table2.getSelectedRow();
+				selRow = row;
+				
+				String id = wr.model2.getValueAt(row, 0).toString();
+				if(id.equals(myId)) {
+					wr.b3.setEnabled(false);
+					wr.b4.setEnabled(false);
+					wr.b5.setEnabled(false);
+				}
+				else {
+					wr.b3.setEnabled(true);
+					wr.b4.setEnabled(true);
+					wr.b5.setEnabled(true);
+				}
+				
+			}
+		}
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 }

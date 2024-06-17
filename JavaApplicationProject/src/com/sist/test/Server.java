@@ -1,5 +1,6 @@
 package com.sist.test;
 import java.util.*;
+import java.awt.DisplayMode;
 import java.io.*;
 import java.net.*;
 
@@ -112,7 +113,7 @@ public class Server implements Runnable{
 							waitVc.add(this);
 							
 							//1. 창 갱신
-							messageTo(Function.MYLOGIN+"|"+id+"|"+name); // login --> waitroom 으로 변경
+							messageTo(Function.MYLOG+"|"+id+"|"+name); // login --> waitroom 으로 변경
 							//2. 이미 접속된 회원의 모든정보를 받는다
 							for(Client client:waitVc) {
 								messageTo(Function.LOGIN + "|"
@@ -125,14 +126,71 @@ public class Server implements Runnable{
 							//3. 개설된 방정보
 							
 						} break;
-						case Function.EXIT: {// 나가기요청
+/*
+ *    로그인  을 하게되면
+ *    ---- 
+ *    로그인을 하는사람	=> Mylog  
+ *    로그인이 되어있는 사람  => login
+ *    
+ *    나가기를 했을때 마찬가지로
+ *    남아있는 사람  => exit
+ *    실제 나가는 사람 => my exit
+ *    
+ *    Client / Server (웹)
+ *    	 |        |
+ *    Slave		Master
+ *    
+ *    Server => Client 에 지시를 내린다
+ *    Client => Server 에서 지시를 받아서 동작
+ */
+						case Function.EXIT: {// 나가기요청 exit.jsp 
+							messageAll(Function.EXIT+"|"+id);// 테이블에서 제거
+							messageAll(Function.CHAT+"|[♬ 알림]"+name+"님이 퇴장하셨습니다");
+							// 남아있는 사람 처리
 							
+							// 실제 나가는 사람 처리
+							for(Client client : waitVc) {
+								if (client.id.equals(id)) {
+									messageTo(Function.MYEXIT+"|"); // 윈도우창 종료
+									waitVc.remove(client);
+									in.close();
+									out.close();
+								}
+							}
 						} break;
 						case Function.CHAT: {// 채팅요청
 							String message = st.nextToken();
-							messageTo(Function.CHAT+"|["
+							messageAll(Function.CHAT+"|["
 									+name+ "]"+message);
 						} break;
+						/*
+						 *  클라이언트 : 요청 / 응답 출력
+						 *  		---- <a> , <input type=button> , <from>
+						 *  		---- html / css
+						 *  
+						 *  서버 : 요청받기
+						 *  응답하기 - HttpServletRequest
+						 *  저장하기 - HttpServleresponse
+						 *  ---------
+						 *  수정기능	|
+						 *  삭제기능	| - > JDBC (오라클 연동)
+						 *  찾기기능	|
+						 *  -----------------이 기능들을 다 갖고있는것 = 자바 라이브러리 
+						 */
+						case Function.INFO: {
+							String yid = st.nextToken();
+							MemberVO vo = dao.memberInfo2(yid);
+							messageTo(Function.INFO+"|"
+									+vo.getName()+"|"
+									+vo.getSex()+"|"
+									+vo.getAddr1()+"|"
+									+vo.getEmail()+"|"
+									+vo.getPhone()+"|"
+									+vo.getContent());
+							
+						}
+						break;
+						
 							
 					}
 					

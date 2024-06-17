@@ -7,7 +7,8 @@ import java.sql.*;
 public class MemberDAO {
 	private Connection conn;
 	private PreparedStatement ps;
-	private final String URL = "jdbc:oracle:thin:@localhost:1521:XE";
+	private final String URL = "jdbc:oracle:thin:@192.168.10.124:1521:XE";
+	// localhost => 192.168.10.124
 	private static MemberDAO dao;
 	
 	// 1. 드라이버 등록
@@ -19,7 +20,7 @@ public class MemberDAO {
 	// 2. 오라클 연결
 	public void getConnection() {
 		try {
-			conn = DriverManager.getConnection(URL,"hr","happy");
+			conn = DriverManager.getConnection(URL,"hr1","happy");
 		}catch ( Exception ex ) {}
 	}
 	// 3. 오라클 해제
@@ -46,7 +47,7 @@ public class MemberDAO {
 	 * = 사번은 존재, 이름도 동일		2
 	 * ------------------------------String / int
 	 */
-	public String memberLogin ( String id,String pw) {
+	public String memberLogin ( String id,String pwd) {
 		String result = "";
 		try {
 //			1. 연결
@@ -68,7 +69,7 @@ public class MemberDAO {
 				result = "NO ID";
 			}
 			else { // ID가 있다면
-				sql = "SELECT pw FROM member "
+				sql = "SELECT pwd FROM member "
 					+ "WHERE id=?";
 				//오라클로 전송
 				ps = conn.prepareStatement(sql);
@@ -76,14 +77,14 @@ public class MemberDAO {
 				// 결과값 받기
 				rs = ps.executeQuery();
 				rs.next();
-				String db_pw = rs.getString(1);
+				String db_pwd = rs.getString(1);
 				rs.close();
 				
-				if(db_pw.equals(pw)) { // 로그인이 된상태
+				if(db_pwd.equals(pwd)) { // 로그인이 된상태
 					result = "OK";
 				}
 				else { // 이름이 없는 상태
-					result = "NO PW";
+					result = "NO PWD";
 				}
 			}
 		}catch (Exception ex) {
@@ -119,6 +120,34 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	public MemberVO memberInfo2(String id) {
+		MemberVO vo = new MemberVO();
+		try {
+			getConnection();
+			String sql = "SELECT name,sex,addr1,phone,content,email "
+						+"FROM member "
+						+"WHERE id=? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			vo.setName(rs.getString(1));
+			vo.setSex(rs.getString(2));
+			vo.setAddr1(rs.getString(3));
+			vo.setPhone(rs.getString(4));
+			vo.setContent(rs.getString(5));
+			vo.setEmail(rs.getString(6));
+			rs.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			disConnection();
+		}
+		return vo;
+				
+	}
 	// 2. 회원가입 => 아이디 중복체크 / 우편번호 검색
 	// 2-1 아이디 중복체크
 	/*
@@ -144,12 +173,11 @@ public class MemberDAO {
 		String result = "";
 		try {
 			getConnection();
-			// admin = 관리자냐? 라는 질문에 no 라고 답한것임. 가입하는건 일반 유저
 			String sql = "INSERT INTO member VALUES(?,?,?,?,?,?,?,?,?,?,?,SYSDATE,'n')";
 			ps = conn.prepareStatement(sql);
 			// ? 에 값을 채운다 setString 을 줬을때
 			ps.setString(1, vo.getId());
-			ps.setString(2, vo.getPw());
+			ps.setString(2, vo.getPwd());
 			ps.setString(3, vo.getName());
 			ps.setString(4, vo.getSex());
 			ps.setString(5, vo.getBirthday());

@@ -19,7 +19,7 @@ import java.util.*;
 /*
  *   => 서버에서 전송된 데이터 읽기 => 프로그램을 별도로 동작 => 쓰레드 
  *   => 클라이언트 요청을 하는 프로그램 
- */
+ */ 
 
 public class ClientMain extends JFrame implements ActionListener, MouseListener, Runnable {
 	CardLayout card = new CardLayout();
@@ -46,12 +46,13 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 
 		mp.setBounds(25, 168, 100, 450);
 	      add(mp);
-	      cp.setBounds(150, 0, 1186, 718);
+	    cp.setBounds(150, 0, 1186, 718);
 	      add(cp);
 
 		setSize(1366, 768);
 		setResizable(false);
 		// setVisible(true);
+        setLocationRelativeTo(null); // 프레임을 화면 중앙에 배치
 
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		// setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -171,6 +172,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 
 			String post = jp.posttf.getText();
 			if (post.length() < 1) {
+				
 				jp.posttf.requestFocus();
 				return;
 			}
@@ -318,7 +320,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 					// 로그인 ==> 서버로 전송
 					try {
 						// 1. 소켓 => 전화 걸기
-						s = new Socket("localhost", 11010); // 조별
+						s = new Socket("192.168.0.104", 11010); // 조별
 						out = s.getOutputStream();
 						System.out.println("id=" + id);
 						in = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -405,6 +407,12 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 					String name = st.nextToken();
 					setTitle(name + "님의 채팅창");
 					lp.setVisible(false);
+					cp.my.idtf.setText(myId);
+					cp.my.idtf.setFont(new Font("맑은 고딕",Font.BOLD,30));
+					cp.my.idtf.setHorizontalAlignment(JTextField.CENTER);
+					cp.my.nametf.setText(name);
+					cp.my.nametf.setFont(new Font("맑은 고딕",Font.BOLD,30));
+					cp.my.nametf.setHorizontalAlignment(JTextField.CENTER);
 					setVisible(true);
 				}
 					break;

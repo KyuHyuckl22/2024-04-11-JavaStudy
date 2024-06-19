@@ -152,7 +152,7 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 	            cp.card.show(cp, "DETAIL");
 	         }
 	      }
-	   }
+	   } 
 	@Override
 	public void mousePressed(MouseEvent e) {
 	}
@@ -166,8 +166,6 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 	public void mouseExited(MouseEvent e) {
 	}
 }
-
-
 
 
 

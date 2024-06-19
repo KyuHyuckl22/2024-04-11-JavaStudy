@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import com.sist.dao.*;
 
-public class BoardDeletePanel extends JPanel implements ActionListener{
+public class ResDeletePanel extends JPanel implements ActionListener{
 	JLabel titleLa, pwdLa;
 	JPasswordField pf;
 	JButton b1,b2;
@@ -12,7 +12,7 @@ public class BoardDeletePanel extends JPanel implements ActionListener{
 	BoardDAO dao;
 	
 	int no = 0;
-	public BoardDeletePanel(ControllPanel cp) {
+	public ResDeletePanel(ControllPanel cp) {
 		
 		this.cp=cp;
 		dao=BoardDAO.newInstance();

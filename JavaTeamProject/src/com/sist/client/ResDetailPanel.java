@@ -10,14 +10,14 @@ import javax.swing.JTextArea;
 import java.awt.event.*;
 import com.sist.dao.*;
 
-public class BoardDetailPanel extends JPanel implements ActionListener{
+public class ResDetailPanel extends JPanel implements ActionListener{
 	JLabel titleLa, nameLa, noLa, subLa, dayLa, hitLa;
 	JLabel name, no, sub, day, hit;
 	JTextArea ta;
 	JButton b1, b2, b3; // 1. 수정 2. 삭제 3. 목록
 	ControllPanel cp;
 	BoardDAO dao;
-	public BoardDetailPanel(ControllPanel cp) {
+	public ResDetailPanel(ControllPanel cp) {
 
 		this.cp = cp;
 		dao = BoardDAO.newInstance();
@@ -32,7 +32,7 @@ public class BoardDetailPanel extends JPanel implements ActionListener{
 		noLa.setBounds(120, 75, 80, 30);
 		no = new JLabel("", JLabel.CENTER);
 		no.setBounds(205, 75, 120, 30);
-		add(noLa);
+		add(noLa); 
 		add(no);
 
 		dayLa = new JLabel("작성일", JLabel.CENTER);

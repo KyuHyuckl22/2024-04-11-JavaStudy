@@ -19,7 +19,6 @@ public class LoginPanel extends JFrame{
     		@Override
     		protected void paintComponent(Graphics g) {
     			super.paintComponent(g);
-    			
     			g.drawImage(back, 0, 0, getWidth(),getHeight(),this);
     		}
     	});

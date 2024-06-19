@@ -12,6 +12,7 @@ public class ControllPanel extends JPanel{
    GoodsDetailPanel dp;
    FindPanel fp;
    ChatPanel chatP=new ChatPanel();
+   MypagePanel my;
    BoardListPanel bp;
    BoardInsertPanel bip;
    BoardDetailPanel bdp;
@@ -38,6 +39,7 @@ public class ControllPanel extends JPanel{
 	   bdp = new BoardDetailPanel(this);
 	   bdelp = new BoardDeletePanel(this);
 	   bup = new BoardUpdatePanel(this);
+	   my = new MypagePanel(this);
 	   
 	   add("HP",hp);
 	   add("CHAT",chatP);
@@ -48,6 +50,7 @@ public class ControllPanel extends JPanel{
 	   add("DETAIL",bdp);
 	   add("DELETE",bdelp);
 	   add("UPDATE",bup);
+	   add("MY",my);
    }
 }
 

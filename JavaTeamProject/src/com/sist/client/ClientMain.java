@@ -44,12 +44,12 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 	public ClientMain() {
 		setLayout(null);
 
-		mp.setBounds(300, 15, 600, 35);
-		add(mp);
-		cp.setBounds(10, 60, 930, 600);
-		add(cp);
+		mp.setBounds(25, 168, 100, 450);
+	      add(mp);
+	      cp.setBounds(150, 0, 1186, 718);
+	      add(cp);
 
-		setSize(960, 700);
+		setSize(1366, 768);
 		setResizable(false);
 		// setVisible(true);
 
@@ -78,6 +78,8 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		mp.homeBtn.addActionListener(this);
 		mp.findBtn.addActionListener(this);
 		mp.boardBtn.addActionListener(this);
+		mp.myBtn.addActionListener(this);
+		
 		cp.chatP.tf.addActionListener(this);
 
 	}
@@ -97,6 +99,8 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		if (e.getSource() == lp.cancelBtn) {
 			dispose();// window메모리 해제
 			System.exit(0);// 프로그램 종료
+		}else if (e.getSource() == mp.myBtn) {
+			cp.card.show(cp, "MY");
 		}
 		else if (e.getSource() == mp.boardBtn) {
 			cp.card.show(cp, "LIST"); // <a harf="list.jsp">

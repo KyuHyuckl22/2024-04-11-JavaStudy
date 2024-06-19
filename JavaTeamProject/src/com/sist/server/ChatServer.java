@@ -26,7 +26,6 @@ public class ChatServer implements Runnable{
 		try
 		{
 			dao=MemberDAO.newInstance();
-			
 			ss=new ServerSocket(PORT);
 			// 같은 컴퓨터에서는 서버는 한번만 실행해야 된다 ..
 			System.out.println("Server Start...");

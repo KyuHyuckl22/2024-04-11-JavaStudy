@@ -19,6 +19,8 @@ public class ControllPanel extends JPanel{
    BoardDeletePanel bdelp;
    BoardUpdatePanel bup;
    SchedulerPanel sp;
+   ThemaPanel tp;
+   FoodHousePanel fhp;
    // 웹에서 => 화면 변경 => controller
    /*
     *   처리 : Model
@@ -42,9 +44,11 @@ public class ControllPanel extends JPanel{
 	   bup = new BoardUpdatePanel(this);
 	   my = new MypagePanel(this);
 	   sp = new SchedulerPanel(this);
+	   tp = new ThemaPanel(this);
+	   fhp = new FoodHousePanel(this);
 	   
 	   add("SP",sp);
-	   add("HP",hp);
+	   add("FHP",fhp);
 	   add("CHAT",chatP);
 	   add("DP",dp);
 	   add("FP",fp);
@@ -54,6 +58,7 @@ public class ControllPanel extends JPanel{
 	   add("DELETE",bdelp);
 	   add("UPDATE",bup);
 	   add("MY",my);
+//	   add("HP",hp);
    }
 }
 

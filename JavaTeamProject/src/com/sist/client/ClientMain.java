@@ -102,7 +102,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 			dispose();// window메모리 해제
 			System.exit(0);// 프로그램 종료
 		}else if(e.getSource() == mp.rankBtn) {
-			cp.card.show(cp, "HP");
+			cp.card.show(cp, "FHP");
 		}
 		else if (e.getSource() == mp.myBtn) {
 			cp.card.show(cp, "MY");

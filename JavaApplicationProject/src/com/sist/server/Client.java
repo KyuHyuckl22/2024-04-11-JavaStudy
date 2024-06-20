@@ -89,7 +89,7 @@ public class Client extends JFrame implements ActionListener,Runnable{
 					return;
 				}
 				// 1. 소켓 생성
-				s=new Socket("192.168.0.102",11010);
+				s=new Socket("localhost",11010);
 				// 2. 서버의 송수신 위치 확인 
 				// 수신 
 				in=new BufferedReader(new InputStreamReader(s.getInputStream()));

@@ -80,6 +80,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		mp.findBtn.addActionListener(this);
 		mp.boardBtn.addActionListener(this);
 		mp.myBtn.addActionListener(this);
+		mp.rankBtn.addActionListener(this);
 		
 		cp.chatP.tf.addActionListener(this);
 
@@ -100,7 +101,10 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		if (e.getSource() == lp.cancelBtn) {
 			dispose();// window메모리 해제
 			System.exit(0);// 프로그램 종료
-		}else if (e.getSource() == mp.myBtn) {
+		}else if(e.getSource() == mp.rankBtn) {
+			cp.card.show(cp, "HP");
+		}
+		else if (e.getSource() == mp.myBtn) {
 			cp.card.show(cp, "MY");
 		}
 		else if (e.getSource() == mp.boardBtn) {
@@ -131,7 +135,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		} else if (e.getSource() == mp.chatBtn) {
 			cp.card.show(cp, "CHAT");
 		} else if (e.getSource() == mp.homeBtn) {
-			cp.card.show(cp, "HP");
+			cp.card.show(cp, "SP");
 		} else if (e.getSource() == jp.b1)// 아이디 중복 체크
 		{
 			idfrm.tf.setText("");

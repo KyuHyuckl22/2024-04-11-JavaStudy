@@ -1,10 +1,7 @@
 package com.sist.server;
 import java.util.*;
 
-import javax.crypto.Cipher;
-
 import java.io.*;
-import java.lang.module.FindException;
 import java.net.*;
 import com.sist.commons.*;
 import com.sist.dao.*;
@@ -26,7 +23,6 @@ public class ChatServer implements Runnable{
 		try
 		{
 			dao=MemberDAO.newInstance();
-			
 			ss=new ServerSocket(PORT);
 			// 같은 컴퓨터에서는 서버는 한번만 실행해야 된다 ..
 			System.out.println("Server Start...");
@@ -109,7 +105,7 @@ public class ChatServer implements Runnable{
 						   name=vo.getName();
 						   sex=vo.getSex();
 						   admin=vo.getAdmin();
-						   System.out.println("name="+name);
+						   //System.out.println("name="+name);
 						   // 1. 접속된 모든 회원에게 정보 전송 
 						   messageAll(Function.LOGIN+"|"+id+"|"+name+"|"
 								    +sex+"|"+admin);
@@ -121,7 +117,7 @@ public class ChatServer implements Runnable{
 						   waitVc.add(this);
 						   
 						   // Login=>Home으로 변경 (창) 
-						   messageTo(Function.MYLOG+"|"+id+"|"+name);
+						   messageTo(Function.MYLOG+"|"+id+"|"+name+"|"+admin);
 						   // 접속자 정보를 전송 
 						   for(Client client:waitVc)
 						   {
@@ -143,6 +139,61 @@ public class ChatServer implements Runnable{
 						   
 					   }
 					   break;
+					   // 상담 
+					   case Function.ONEINIT:
+					   {
+						   String adminId=st.nextToken();
+						   String userId=st.nextToken();
+						   for(Client client:waitVc)
+						   {
+							   if(adminId.equals(client.id))
+							   {
+								   client.messageTo(Function.ONEINIT+"|"+userId);
+							   }
+						   }
+					   }
+					   break;
+					   // this => 
+					   case Function.ONENO:
+					   {
+						   String userId=st.nextToken();
+						   for(Client client:waitVc)
+						   {
+							   if(userId.equals(client.id))
+							   {
+								   client.messageTo(Function.ONENO+"|"+id);
+							   }
+						   }
+					   }
+					   break;
+					   case Function.ONEYES:
+					   {
+						   String userId=st.nextToken();
+						   for(Client client:waitVc)
+						   {
+							   if(userId.equals(client.id))
+							   {
+								   client.messageTo(Function.ONEYES+"|"+id);// 상담 받는 사람 
+								   messageTo(Function.ONEYES+"|"+userId);// 상담자 
+							   }
+						   }
+					   }
+					   break;
+					   case Function.ONETOONE:
+					   {
+						   String userId=st.nextToken();
+						   String message=st.nextToken();
+						   for(Client client:waitVc)
+						   {
+							   if(userId.equals(client.id))
+							   {
+								   client.messageTo(Function.ONETOONE+"|["+name+"]"+message);// 상담 받는 사람 
+								   messageTo(Function.ONETOONE+"|["+name+"]"+message);// 상담자 
+							   }
+						   }
+						   
+					   }
+					   break;
 					   case Function.EXIT:
 					   {
 						   messageAll(Function.EXIT+"|"+id);
@@ -160,12 +211,12 @@ public class ChatServer implements Runnable{
 						    	in.close();
 						    	out.close();
 						    	
-						    	break;
 						     }
 						    // => 나가라는 메세지 전송 
 						    // => in/out종료
 						   }
 					   }
+					   break;
 					}
 				}
 			}catch(Exception ex) {}

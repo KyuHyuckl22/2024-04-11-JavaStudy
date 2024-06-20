@@ -1,5 +1,6 @@
 package com.sist.dao;
 import java.util.*;
+import java.util.Date;
 
 import javax.naming.spi.DirStateFactory.Result;
 
@@ -302,7 +303,91 @@ public class GoodsDAO {
     	 return list;
      }
      // 구매 => INSERT , UPDATE , DELETE 
-     
+/*
+ * 	private int cno,gno,price,account;
+	private String id;
+	private Date regdate;     
+ */
+     public void cartInsert(CartVO vo) {
+    	 try {
+    		 getConnection();
+    		 String sql = "INSERT INTO cart(cno,gno,id,price,account) "
+    				 	+ "VALUES(cart_cno_seq.nextval,?,?,?,?) ";
+    		 ps = conn.prepareStatement(sql);
+    		 ps.setInt(1, vo.getGno());
+    		 ps.setString(2, vo.getId());
+    		 ps.setInt(3, vo.getPrice());
+    		 ps.setInt(4, vo.getAccount());
+    		 
+    		 ps.executeUpdate();
+    		 
+    	 }catch (Exception ex) {
+			ex.printStackTrace();
+		}
+    	 finally {
+    		 disConnection();
+    		 
+    	 }
+     }
+     public void cartCancel(int cno) {
+    	 try {
+    		 getConnection();
+    		 String sel = "DELETE FROM cart "
+    				 	+ "WHERE con= "+ cno;
+    		 ps = conn.prepareStatement(sel);
+    		 ps.executeUpdate();
+    		 
+    	 }catch(Exception ex) {
+    		 ex.printStackTrace();
+    	 }
+    	 finally {
+    		 disConnection();
+    	 }
+     }
+     /*
+      * 설계 ==> 테이블 설계
+      * ----------------
+      * 시퀀스
+      * 인덱스 : 자주 검색 / 데이터 출력이 많은 경우 ==> 속도 최적화 시킬때 사용
+      * -------------------------------------------------------
+      * 자주 사용하는 SQL : View
+      * 테이블 여러개 연결 : JOIN / SubQuery
+      * -------------------------------------------------------
+      * 반복 수행 => 주로 댓글에서 사용 ==> 함수 써야함 => 그때 나오는게 PL / SQL
+      * SQL 소스량을 줄인다 => 자동화 처리 해야함 => Trigger
+      */
+     public List<CartVO> cartSelect(String id) {
+    	 List<CartVO> list = new ArrayList<CartVO>();
+    	 try {
+    		 getConnection();
+    		 String sql = "SELECT cno,price,account, "
+    				 	+ "(SELECT goods_poster FROM goods_all WHERE no=cart.gno), "
+    				 	+ "(SELECT goods_name FROM goods_all WHERE no=cart.gno), "
+    				 	+ "(SELECT goods_price FROM goods_all WHERE no=cart.gno) "
+    				 	+ "FROM cart "
+    				 	+ "WHERE id=?";
+    		 ps = conn.prepareStatement(sql);
+    		 ps.setString(1, id); //1번 물음표에 id 를 넣어라
+    		 ResultSet rs = ps.executeQuery();
+    		 while(rs.next()) {
+    			 CartVO vo = new CartVO();
+    			 vo.setCno(rs.getInt(1));
+    			 vo.setPrice(rs.getInt(2));
+    			 vo.setAccount(rs.getInt(3));
+    			 vo.getGvo().setGoods_poster(rs.getString(4));
+    			 vo.getGvo().setGoods_name(rs.getString(5));
+    			 vo.getGvo().setGoods_price(rs.getString(6));
+    			 list.add(vo);
+    		 }
+    		 rs.close();
+    	 }catch(Exception ex) {
+    		 ex.printStackTrace();
+    	 }
+    	 finally {
+    		 disConnection();
+    	 }
+    	 return list;
+     }
 }
 
 

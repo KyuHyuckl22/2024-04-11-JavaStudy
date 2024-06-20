@@ -13,6 +13,14 @@ public class ChatPanel extends JPanel{
     JTable table; 
     DefaultTableModel model;
     JButton b1,b2;
+    // 상담 창
+    JLabel la;
+    JTextField youtf,sendTf;
+    JTextArea ta;
+    JButton ob;
+	JPanel pan = new JPanel();
+
+    
     public ChatPanel()
     {
     	setLayout(null);
@@ -59,6 +67,7 @@ public class ChatPanel extends JPanel{
     	
     	box2=new JComboBox<String>();
     	box2.setBounds(495,420, 100, 30);
+    	box2.addItem("상담자");
     	add(box2);
     	
     	b1=new JButton("1:1상담");
@@ -68,6 +77,32 @@ public class ChatPanel extends JPanel{
     	b2.setBounds(725, 420, 100, 30);
     	
     	add(b1);add(b2);
+    	
+    	la = new JLabel("1:1 대상");
+    	youtf=new JTextField(10);
+    	youtf.setEnabled(false);
+    	ob = new JButton("종료");
+    	
+    	
+    	ta = new JTextArea();
+    	JScrollPane js3 = new JScrollPane(ta);
+    	ta.setEditable(false);
+    	
+    	sendTf = new JTextField(30); 
+    	
+    	pan.setLayout(new BorderLayout());
+    	
+    	JPanel p = new JPanel();
+    	p.add(la); p.add(youtf); p.add(ob);
+    	pan.add("North",p);
+    	
+    	pan.add("Center",js3);
+    	pan.add("South",sendTf);
+    	
+    	pan.setBounds(495, 220, 400, 300);
+    	add(pan);
+    	pan.setVisible(false);
+    	
     }
     public void initStyle()
     {

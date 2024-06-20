@@ -17,6 +17,7 @@ public class ControllPanel extends JPanel{
    BoardDetailPanel bdp;
    BoardDeletePanel bdelp;
    BoardUpdatePanel bup;
+   MypagePanel mpp;
    // 웹에서 => 화면 변경 => controller
    /*
     *   처리 : Model
@@ -26,8 +27,10 @@ public class ControllPanel extends JPanel{
     *   최근 Spring MVC 가 사라졌다
     *   	----------
     */
-   public ControllPanel()
+   ClientMain cMain;
+   public ControllPanel(ClientMain cm)
    {
+	   cMain = cm;
 	   setLayout(card);
 	   //add("EP",ep);
 	   hp = new HomePanel(this);
@@ -38,6 +41,8 @@ public class ControllPanel extends JPanel{
 	   bdp = new BoardDetailPanel(this);
 	   bdelp = new BoardDeletePanel(this);
 	   bup = new BoardUpdatePanel(this);
+	   mpp = new MypagePanel(this);
+	   
 	   
 	   add("HP",hp);
 	   add("CHAT",chatP);
@@ -48,6 +53,7 @@ public class ControllPanel extends JPanel{
 	   add("DETAIL",bdp);
 	   add("DELETE",bdelp);
 	   add("UPDATE",bup);
+	   add("MYPAGE",mpp);
    }
 }
 

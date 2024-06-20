@@ -30,6 +30,8 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 	GoodsDAO dao;
 	// 초기화
 	ControllPanel cp;
+	String myId;
+	
 	public HomePanel(ControllPanel cp) {
 		this.cp=cp;
 		dao = GoodsDAO.newInstance();
@@ -99,7 +101,7 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 				if(e.getClickCount() == 2) { // 2번 클릭했을때
 					String no = imgs[i].getToolTipText();
 					no = no.substring(no.lastIndexOf("^")+1);
-					cp.dp.print(Integer.parseInt(no));
+					cp.dp.print(Integer.parseInt(no),myId);
 					cp.card.show(cp,"DP");
 					
 				}

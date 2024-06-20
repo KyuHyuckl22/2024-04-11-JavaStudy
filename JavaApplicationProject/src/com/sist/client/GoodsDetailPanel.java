@@ -15,6 +15,8 @@ public class GoodsDetailPanel extends JPanel implements ActionListener,ItemListe
 	
 	ControllPanel cp; // 화면 이동이 가능하게
 	GoodsDAO dao;
+	String myId;
+	int gno = 0;
 	
 	public GoodsDetailPanel(ControllPanel cp) {
 		
@@ -73,9 +75,12 @@ public class GoodsDetailPanel extends JPanel implements ActionListener,ItemListe
 		add(box);
 				
 		b2.addActionListener(this);
+		b1.addActionListener(this);
 		box.addItemListener(this);
 	}
-	public void print(int no) {
+	public void print(int no, String id) {
+		myId = id;
+		gno = no;
 		// 1. 오라클에서 값을 받는다
 		GoodsVO vo = dao.goodsDetailData(no);
 		try {
@@ -114,6 +119,26 @@ public class GoodsDetailPanel extends JPanel implements ActionListener,ItemListe
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == b2) {
 			cp.card.show(cp, "HP");
+		}
+		else if (e.getSource() == b1) {
+			CartVO vo = new CartVO();
+			vo.setGno(gno);
+			
+			String id = cp.cMain.myId;
+			
+			vo.setId(id);
+			
+			int account = box.getSelectedIndex();
+			vo.setAccount(account);
+			String price = tLa.getText();
+			price = price.replaceAll("[^0-9]", "");
+			vo.setPrice(Integer.parseInt(price));
+			
+			dao.cartInsert(vo);
+			JOptionPane.showMessageDialog(this, "장바구니에 추가되었습니다 \n 마이페이지를 확인해주세요");
+			
+			// 이동
+			// cp.card.show(cp, price);
 		}
 	}
 }

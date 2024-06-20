@@ -16,7 +16,7 @@ public class FindPanel extends JPanel implements ActionListener,MouseListener{
 	GoodsDAO dao;
 	ControllPanel cp;
 	TableColumn column;
-	
+	String myId;
 	public FindPanel (ControllPanel cp ) {
 		dao = GoodsDAO.newInstance();
 		this.cp=cp;
@@ -37,6 +37,7 @@ public class FindPanel extends JPanel implements ActionListener,MouseListener{
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
+			
 			@Override
 			public Class<?> getColumnClass(int columnIndex){
 				return getValueAt(0, columnIndex).getClass();
@@ -109,7 +110,7 @@ public class FindPanel extends JPanel implements ActionListener,MouseListener{
 			if(e.getClickCount() == 2) {
 				int row = table.getSelectedRow();
 				String no = model.getValueAt(row, 0).toString();
-				cp.dp.print(Integer.parseInt(no));
+				cp.dp.print(Integer.parseInt(no),myId);
 				cp.card.show(cp, "DP");
 			}
 		}

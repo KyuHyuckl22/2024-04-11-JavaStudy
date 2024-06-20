@@ -19,12 +19,12 @@ public class ChatPanel extends JPanel{
     	setLayout(null);
     	pane=new JTextPane();
     	JScrollPane js1=new JScrollPane(pane);
-    	js1.setBounds(10, 30, 480, 560);
+    	js1.setBounds(10, 80, 480, 560);
     	add(js1);
     	pane.setEditable(false);
     	
     	tf=new JTextField();
-    	tf.setBounds(10, 600, 380, 30);
+    	tf.setBounds(10, 650, 380, 30);
     	add(tf);
     	
     	box1=new JComboBox<String>();
@@ -37,7 +37,7 @@ public class ChatPanel extends JPanel{
     	box1.addItem("pink");
     	box1.addItem("orange");
     	
-    	box1.setBounds(395, 600, 95, 30);
+    	box1.setBounds(395, 650, 95, 30);
     	add(box1);
     	
     	String[] col={"ID","이름","성별"};
@@ -55,18 +55,18 @@ public class ChatPanel extends JPanel{
     	};
     	table=new JTable(model);
     	JScrollPane js2=new JScrollPane(table);
-    	js2.setBounds(500, 30, 400, 380);
+    	js2.setBounds(500, 80, 400, 380);
     	add(js2);
     	
     	box2=new JComboBox<String>();
-    	box2.setBounds(500,420, 100, 30);
+    	box2.setBounds(500,470, 100, 30);
     	add(box2);
     	
     	b1=new JButton("1:1상담");
-    	b1.setBounds(605, 420, 120, 30);
+    	b1.setBounds(605, 470, 120, 30);
     	
     	b2=new JButton("정보보기");
-    	b2.setBounds(730, 420, 100, 30);
+    	b2.setBounds(730, 470, 100, 30);
     	
     	add(b1);add(b2);
     }

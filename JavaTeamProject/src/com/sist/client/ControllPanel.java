@@ -21,6 +21,7 @@ public class ControllPanel extends JPanel{
    SchedulerPanel sp;
    ThemaPanel tp;
    FoodHousePanel fhp;
+   
    // 웹에서 => 화면 변경 => controller
    /*
     *   처리 : Model
@@ -51,13 +52,14 @@ public class ControllPanel extends JPanel{
 	   add("FHP",fhp);
 	   add("CHAT",chatP);
 	   add("DP",dp);
-	   add("FP",fp);
+	   add("FIND",fp);
 	   add("LIST",bp);
 	   add("INSERT",bip);
 	   add("DETAIL",bdp);
 	   add("DELETE",bdelp);
 	   add("UPDATE",bup);
 	   add("MY",my);
+	   add("THEMA",tp);
 //	   add("HP",hp);
    }
 }

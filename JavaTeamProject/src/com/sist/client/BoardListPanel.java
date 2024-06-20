@@ -13,7 +13,7 @@ import com.sist.dao.*;
  *   1. jbutton, jmenu, jtext
  */
 public class BoardListPanel extends JPanel implements ActionListener,MouseListener{
-	JLabel titleLa,pageLa;
+	JLabel pageLa;
 	JButton b1,b2,b3;
 	JTable table;
 	DefaultTableModel model;
@@ -32,8 +32,8 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 		b2 = new JButton("이전");
 		b3 = new JButton("다음");
 		pageLa = new JLabel("0 page / 0pages"); // <label>0page / 0 pages</label>
-		titleLa = new JLabel("게시판", JLabel.CENTER);// <table>
-		titleLa.setFont(new Font("맑은 고딕", Font.BOLD, 30)); // <h3></h3>
+//		titleLa = new JLabel("게시판", JLabel.CENTER);// <table>
+//		titleLa.setFont(new Font("맑은 고딕", Font.BOLD, 30)); // <h3></h3>
 
 		String[] col = { "번호", "제목", "이름", "작성일", "조회수" };// <tr><th></th> ....</tr>
 		String[][] row = new String[0][5]; // 한 줄에 5개 데이터를 첨부
@@ -71,8 +71,8 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
 
 //		배치
 		setLayout(null);
-		titleLa.setBounds(120, 15, 620, 50);
-		add(titleLa);
+//		titleLa.setBounds(120, 15, 620, 50);
+//		add(titleLa);
 		b1.setBounds(10, 650, 100, 30);
 		add(b1);
 		js.setBounds(10, 80, 1150, 560);

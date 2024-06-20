@@ -77,7 +77,6 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		mp.exitBtn.addActionListener(this);
 		mp.chatBtn.addActionListener(this);
 		mp.homeBtn.addActionListener(this);
-		mp.findBtn.addActionListener(this);
 		mp.boardBtn.addActionListener(this);
 		mp.myBtn.addActionListener(this);
 		mp.rankBtn.addActionListener(this);
@@ -101,7 +100,43 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		if (e.getSource() == lp.cancelBtn) {
 			dispose();// window메모리 해제
 			System.exit(0);// 프로그램 종료
-		}else if(e.getSource() == mp.rankBtn) {
+		}else if(e.getSource()==cp.tp.b1) {
+			try {
+				if(cp.tp.curpage>1) {
+					cp.tp.curpage--;
+					cp.tp.themaprint(cp.fhp.thema);
+					System.out.println(cp.fhp.thema);
+					System.out.println(cp.tp.totalpage);
+					System.out.println(cp.tp.curpage);
+				}
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}else if(e.getSource()==cp.tp.b2) {
+				if(cp.tp.curpage<cp.tp.totalpage) {
+					cp.tp.curpage++;
+					cp.tp.themaprint(cp.fhp.thema);
+				}
+
+			}
+			else if(e.getSource()==cp.fp.b1) {
+				try {
+				if(cp.fp.curpage>1) {
+					cp.fp.curpage--;
+					cp.fp.print(cp.fhp.find);
+				}
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}else if(e.getSource()==cp.fp.b2) {
+				if(cp.fp.curpage<cp.fp.totalpage) {
+					cp.fp.curpage++;
+					cp.fp.print(cp.fhp.find);
+				}
+
+			}
+		
+		else if(e.getSource() == mp.rankBtn) {
 			cp.card.show(cp, "FHP");
 		}
 		else if (e.getSource() == mp.myBtn) {
@@ -109,9 +144,6 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		}
 		else if (e.getSource() == mp.boardBtn) {
 			cp.card.show(cp, "LIST"); // <a harf="list.jsp">
-		}
-		else if (e.getSource() == mp.findBtn) {
-			cp.card.show(cp,"FP");
 		}
 		else if (e.getSource() == cp.chatP.tf) {
 			String msg = cp.chatP.tf.getText();
@@ -409,7 +441,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 				case Function.MYLOG: {
 					myId = st.nextToken();
 					String name = st.nextToken();
-					setTitle(name + "님의 채팅창");
+					setTitle("");
 					lp.setVisible(false);
 					cp.my.idtf.setText(myId);
 					cp.my.idtf.setFont(new Font("맑은 고딕",Font.BOLD,30));

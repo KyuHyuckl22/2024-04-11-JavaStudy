@@ -90,7 +90,7 @@ public class MypagePanel extends JPanel implements ActionListener,MouseListener{
 		p.add(pageLa);
 		p.add(nextB);
 
-		p.setBounds(583, 660, 200, 30);
+		p.setBounds(558, 660, 250, 30);
 		add(p);
 		print();
 		
@@ -131,7 +131,7 @@ public class MypagePanel extends JPanel implements ActionListener,MouseListener{
 	        introScroll.setBounds(250, 180, 866, 200);
 	        add(introScroll);
 
-	        tablela = new JLabel("예약 정보 : ");
+	        tablela = new JLabel("나의 일정 : ");
 	        tablela.setBounds(180, 400, 80, 30);
 	        add(tablela);
 	        

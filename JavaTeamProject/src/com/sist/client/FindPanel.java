@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.URL;
 import java.util.*;
 import javax.swing.*;
@@ -14,7 +16,7 @@ import com.sist.commons.ImageChange;
 import com.sist.dao.FoodDAO;
 import com.sist.dao.FoodVO;
 
-public class FindPanel extends JPanel {
+public class FindPanel extends JPanel implements MouseListener{
 	JTable table;
 	DefaultTableModel model;
 	TableColumn column;
@@ -118,5 +120,30 @@ public class FindPanel extends JPanel {
 				}
 			}
 		}
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == table) {
+            if (e.getClickCount() == 2) {
+               int row = table.getSelectedRow();
+               String no = model.getValueAt(row, 0).toString();
+               // 데이터를 출력
+               cp.bdp.print(Integer.parseInt(no));
+               // 이동
+               cp.card.show(cp, "DETAIL");
+            }
+         }
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
 	}
 }

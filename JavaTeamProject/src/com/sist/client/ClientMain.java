@@ -27,6 +27,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 	JoinPanel jp = new JoinPanel();
 	PostFindFrame post = new PostFindFrame();// 우편번호 검색
 	IdCheckFrame idfrm = new IdCheckFrame();
+
 	ControllPanel cp = new ControllPanel();
 	MenuPanel mp = new MenuPanel();
 	// 네트워크에 필요한 객체
@@ -79,7 +80,10 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 		mp.boardBtn.addActionListener(this);
 		mp.myBtn.addActionListener(this);
 		mp.rankBtn.addActionListener(this);
-		
+		cp.tp.b1.addActionListener(this);
+		cp.tp.b2.addActionListener(this);
+		cp.fp.b1.addActionListener(this);
+		cp.fp.b2.addActionListener(this);
 		cp.chatP.tf.addActionListener(this);
 
 	}
@@ -136,6 +140,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 			}
 		
 		else if(e.getSource() == mp.rankBtn) {
+			cp.fhp.findTf.setText("");
 			cp.card.show(cp, "FHP");
 		}
 		else if (e.getSource() == mp.myBtn) {
@@ -390,9 +395,7 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 				post.setVisible(false);
 			}
 		}
-	       
 	}
-	
 
 	@Override
 	public void mousePressed(MouseEvent e) {

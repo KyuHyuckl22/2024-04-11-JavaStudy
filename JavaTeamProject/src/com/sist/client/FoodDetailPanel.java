@@ -14,7 +14,7 @@ public class FoodDetailPanel extends JPanel implements ActionListener{
    ControllPanel cp; // 화면 이동
    FoodDAO dao;
    
-   int gno = 0;
+
 
    public FoodDetailPanel(ControllPanel cp) {
       dao = FoodDAO.newInstance();
@@ -97,7 +97,6 @@ public class FoodDetailPanel extends JPanel implements ActionListener{
 
    public void print(int no) {
       
-      gno = no;
       // 1. 오라클에서 값을 받는다
       FoodVO vo = dao.foodDetailData(no);
       try {

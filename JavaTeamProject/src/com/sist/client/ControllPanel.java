@@ -55,5 +55,3 @@ public class ControllPanel extends JPanel{
    }
 }
 
-
-

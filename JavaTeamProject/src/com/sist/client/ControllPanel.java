@@ -22,6 +22,7 @@ public class ControllPanel extends JPanel{
    ThemaPanel tp;
    FoodHousePanel fhp;
    
+   
    public ControllPanel()
    {
 	   setLayout(card);

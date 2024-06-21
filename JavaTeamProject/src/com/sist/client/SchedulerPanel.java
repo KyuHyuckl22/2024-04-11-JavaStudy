@@ -3,8 +3,6 @@ package com.sist.client;
 import javax.swing.*;
 import javax.swing.table.*;
 
-import com.sist.client.Add_Schedule;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Calendar;
@@ -42,6 +40,7 @@ public class SchedulerPanel extends JPanel implements ActionListener {
         Tl = new JLabel("제목");
         Tf = new JTextField();
 
+        
         Ll = new JLabel("위치");
         Lf = new JTextField();
 
@@ -196,12 +195,12 @@ public class SchedulerPanel extends JPanel implements ActionListener {
                 table.repaint();
 
                 // 더블 클릭 이벤트 처리
-                if (e.getClickCount() == 2) {
-                    Integer day = (Integer) table.getValueAt(selectedRow, selectedColumn);
-                    if (day != null) {
-                        showAddSchedulePanel(day);
-                    }
-                }
+//                if (e.getClickCount() == 2) {
+//                    Integer day = (Integer) table.getValueAt(selectedRow, selectedColumn);
+//                    if (day != null) {
+//                        showAddSchedulePanel(day);
+//                    }
+//                }
 
             }
         });

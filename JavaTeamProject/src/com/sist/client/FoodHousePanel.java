@@ -1,5 +1,6 @@
 package com.sist.client;
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -106,10 +107,16 @@ public class FoodHousePanel extends JPanel implements ActionListener,MouseListen
 		js.setBounds(150,175,900,450);
 		add(js);
 		
+
 		for(int i=0;i<col.length;i++) {
+			DefaultTableCellRenderer rend = new DefaultTableCellRenderer();
+
 			column=table.getColumnModel().getColumn(i);
-			if(i==0)
+			if(i==0) {
 				column.setPreferredWidth(30);
+				rend.setHorizontalAlignment(JLabel.CENTER);
+				column.setCellRenderer(rend);
+			}
 			else if(i==1)
 				column.setPreferredWidth(70);
 			else if(i==2)
@@ -118,7 +125,8 @@ public class FoodHousePanel extends JPanel implements ActionListener,MouseListen
 				column.setPreferredWidth(30);
 			else if(i==4)
 				column.setPreferredWidth(180);
-
+			
+			
 		}
 		////////////////////////////////////////////////////////////////// 스코어 top 50
 		pageLa=new JLabel(curpage+" page / "+totalpage+" pages");

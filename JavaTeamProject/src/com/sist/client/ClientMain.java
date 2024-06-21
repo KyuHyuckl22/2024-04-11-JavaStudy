@@ -257,7 +257,9 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 
 			if (res.equals("yes")) {
 				JOptionPane.showMessageDialog(this, "회원 가입에 축하합니다");
-				card.show(getContentPane(), "LOGIN");
+//				card.show(getContentPane(), "LOGIN");
+	            lp.setVisible(true);
+	            jp.setVisible(false);
 			} else {
 				JOptionPane.showMessageDialog(this, "회원 가입에 실패하셨습니다\n" + res);
 			}

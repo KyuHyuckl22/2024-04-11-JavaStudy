@@ -53,6 +53,8 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
       table = new JTable(model);
       JScrollPane js = new JScrollPane(table);
       for (int i = 0; i < col.length; i++) {
+    	  DefaultTableCellRenderer rand =new DefaultTableCellRenderer();
+    	  rand.setHorizontalAlignment(JLabel.CENTER);
          column = table.getColumnModel().getColumn(i);
          if (i == 0) {
             column.setPreferredWidth(75);
@@ -65,6 +67,7 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
          } else if (i == 4) {
             column.setPreferredWidth(75);
          }
+         column.setCellRenderer(rand);
       }
       table.getTableHeader().setReorderingAllowed(false);
       table.setShowVerticalLines(false);
@@ -142,6 +145,7 @@ public class BoardListPanel extends JPanel implements ActionListener,MouseListen
          
          cp.card.show(cp, "INSERT");
          cp.bip.nameTf.requestFocus();
+         
       }
    }
    

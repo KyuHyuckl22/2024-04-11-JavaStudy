@@ -32,6 +32,8 @@ public class FoodHousePanel extends JPanel implements ActionListener,MouseListen
 	String thema;
 	String find;
 	
+//	JLabel[] imgs = new JLabel[10];
+	
 	public FoodHousePanel(ControllPanel cp) {
 		dao=FoodDAO.newInstance();
 		this.cp=cp;
@@ -167,31 +169,8 @@ public class FoodHousePanel extends JPanel implements ActionListener,MouseListen
 		
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -277,4 +256,31 @@ public class FoodHousePanel extends JPanel implements ActionListener,MouseListen
 		}
 		
 	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+	      if (e.getSource() == table) {
+		         if (e.getClickCount() == 2) {
+		            int row = table.getSelectedRow();
+		            String no = model.getValueAt(row, 0).toString();
+		            // 데이터를 출력
+		            cp.dp.print(Integer.parseInt(no));
+		            // 이동
+		            cp.card.show(cp, "DP");
+		         }
+		      }
+	      
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+	}
+
 }

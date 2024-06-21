@@ -27,7 +27,6 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 	JoinPanel jp = new JoinPanel();
 	PostFindFrame post = new PostFindFrame();// 우편번호 검색
 	IdCheckFrame idfrm = new IdCheckFrame();
-
 	ControllPanel cp = new ControllPanel();
 	MenuPanel mp = new MenuPanel();
 	// 네트워크에 필요한 객체
@@ -391,7 +390,9 @@ public class ClientMain extends JFrame implements ActionListener, MouseListener,
 				post.setVisible(false);
 			}
 		}
+	       
 	}
+	
 
 	@Override
 	public void mousePressed(MouseEvent e) {

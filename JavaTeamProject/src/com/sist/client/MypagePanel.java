@@ -43,8 +43,8 @@ public class MypagePanel extends JPanel implements ActionListener,MouseListener{
 		//titleLa = new JLabel("예약확인", JLabel.CENTER);// <table>
 		//titleLa.setFont(new Font("맑은 고딕", Font.BOLD, 30)); // <h3></h3>
 
-		String[] col = { "예약번호", "식당이름", "날짜", "시간", "인원수"};// <tr><th></th> ....</tr>
-		String[][] row = new String[0][5]; // 한 줄에 5개 데이터를 첨부
+		String[] col = { "제목", "날짜", "위치", "메모",};// <tr><th></th> ....</tr>
+		String[][] row = new String[0][4]; // 한 줄에 4개 데이터를 첨부
 		model = new DefaultTableModel(row, col) {
 
 			@Override
@@ -61,21 +61,21 @@ public class MypagePanel extends JPanel implements ActionListener,MouseListener{
 		for (int i = 0; i < col.length; i++) {
 			column = table.getColumnModel().getColumn(i);
 			if (i == 0) {
-				column.setPreferredWidth(50);
+				column.setPreferredWidth(75);
 			} else if (i == 1) {
-				column.setPreferredWidth(350);
+				column.setPreferredWidth(75);
 			} else if (i == 2) {
 				column.setPreferredWidth(100);
 			} else if (i == 3) {
-				column.setPreferredWidth(150);
+				column.setPreferredWidth(350);
 			} else if (i == 4) {
-				column.setPreferredWidth(50);
+				column.setPreferredWidth(0);
 			}
 		}
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setShowVerticalLines(false);
 		table.setRowHeight(30);
-		table.getTableHeader().setBackground(Color.pink);
+		table.getTableHeader().setBackground((new Color(229,255,195)));
 
 //		배치
 		setLayout(null);
